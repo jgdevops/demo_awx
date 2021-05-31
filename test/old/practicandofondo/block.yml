@@ -1,0 +1,15 @@
+---
+- hosts: grupo1
+  become: true
+  tasks:
+    - block:
+      - name: crear archivo
+        shell: touch /root/123.txt
+      - name: crear archivo
+        shell: touch /root/124.txt
+    - block: 
+      - name: crear archivo
+        shell: touch /root/125.txt
+      - name: crear archivo
+        shell: touch /root/126.txt
+...

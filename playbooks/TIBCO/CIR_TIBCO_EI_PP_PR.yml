@@ -1,0 +1,15 @@
+---
+- name: Inicializar
+  hosts: grupo1
+  roles:
+    - inicializar
+- name: gestion de ficheros
+  hosts: grupo1
+  roles:
+    - gestionFicheros
+
+- name: implantacion tibco
+  hosts: grupo1
+  roles:
+    - { role: TIBCO, vars: { pordefinir: "pordefinir", salida_descarga: "{{ output_descarga.uid }}"  }}
+...

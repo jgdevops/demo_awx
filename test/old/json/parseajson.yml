@@ -1,0 +1,11 @@
+---
+- hosts: grupo1 
+  vars:
+    jsonVar: "{{ lookup('file', '/home/javi/json/ejemplo.json') | from_json }}"
+  tasks:
+    - name: test loop
+      with_dict: "{{ jsonVar['queue'] }}"
+      shell: |
+        if echo "blue" | grep -q "{{ item.value.color }}" ; then
+            echo "success"
+        fi

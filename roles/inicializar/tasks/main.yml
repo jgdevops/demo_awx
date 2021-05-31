@@ -1,0 +1,14 @@
+---
+#- name: obtener valores de configuracion de la UUAA
+#  debug: msg="{{ lookup('file','{{ fichero_uuaa_conf }}') | from_json | json_query(info_uuaa) }}"
+#  vars:
+#    info_uuaa: "ECDY.CIR_TIBCO_EI_PP_PR.circuito"
+#  register: lista_circuito
+  
+
+- name: Actualizar inicio de la ejecucion en JIRA
+  vars:
+    date: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
+  shell: echo Inicio de la ejecucion. Fecha {{ date }}\ >> /tmp/historicojira.txt
+
+

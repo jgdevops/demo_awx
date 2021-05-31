@@ -1,0 +1,25 @@
+---
+- hosts: directorio
+  tasks: 
+    - name: inclutendo variables
+      include_vars: vars/allvars.yml
+    - name: incluyendo task para el grupo directorio
+      include: tasks/directorio.yml
+    - name: abrir fw
+      firewalld:
+        service: ftp
+        state: enabled
+        permanent: true
+- hosts: archivo
+  tasks:
+    - name: inclutendo variables
+      include_vars: vars/allvars.yml
+    - name: incluyendo task para el grupo directorio
+      include: tasks/archivo.yml
+    - name: abrir fw
+      firewalld:
+        service: http
+        state: enabled
+        permanent: true
+
+       

@@ -1,0 +1,15 @@
+---
+- hosts: grupo2
+  tasks:
+    - name: incluyendo
+      include_vars: paquetes.yml
+    - name: instalando pkg
+      yum:
+        name: "{{ paquetes.mi_pkg }}"
+        state: latest
+    - name: iniciando servicios
+      service:
+        name: "{{ servicio.mi_srv }}"
+        state: started
+        enabled: true
+... 

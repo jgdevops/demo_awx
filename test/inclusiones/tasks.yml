@@ -1,0 +1,11 @@
+---
+- name: Instalando {{ paquete }}
+  yum:
+    name: "{{ paquete }}"
+    state: latest
+- name: Iniciando {{ servicio }}
+  service:
+    name: "{{ servicio }}"
+    state: "{{ state }}"
+    enables: true
+...

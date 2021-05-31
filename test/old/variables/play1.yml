@@ -1,0 +1,16 @@
+---
+- hosts: grupo1
+  vars:
+    - package: samba
+    - service: smb
+  tasks:
+    - name: instalar {{ package }}
+      yum:
+        name: "{{ package }}"
+        state: latest
+    - name: iniciando {{ service }}
+      service:
+        name: "{{ service }}"
+        state: started
+        enabled: true
+...

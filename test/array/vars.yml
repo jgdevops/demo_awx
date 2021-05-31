@@ -1,0 +1,13 @@
+---
+users:
+  rob:
+    first_name: rob
+    last_name: smith
+    home_dir: /home/rsmith
+  john:
+    first_name: john 
+    last_name: last 
+    home_dir: /home/john
+
+...
+

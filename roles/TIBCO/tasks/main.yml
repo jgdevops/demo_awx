@@ -1,0 +1,28 @@
+---
+- name: normalizado de ficheros
+  become: true
+  become_user: "{{ rootUser }}"
+  shell: sleep 1
+
+- name: lanzando primer comando post script con el usuario javi
+  become: true
+  become_user: "{{ usuarioAplicacion }}"
+  shell: /home/javi/script/tibco/postscript.sh {{ build }} {{ entorno }} {{ circuito }}
+  register: salida_postscript
+- debug: var=salida_postscript
+
+- name: indicar ejecucion incorrecta en el post script de tibco
+  shell: echo "salida incorrecta" 
+  when: salida_postscript.rc  != 0
+
+- name: indicar OK  en la ejecucion del post script de tibci
+  shell: echo "salida correcta" 
+  when: salida_postscript.rc  == 0
+
+  
+- name: lanzando el segundo comando post script con el usuario root
+  become: true
+  become_user: "{{ rootUser }}"
+  shell: "{{ comandoPostScript }} {{ build }} {{ entorno }} {{ circuito }}"
+...
+

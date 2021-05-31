@@ -1,0 +1,13 @@
+#Definición de circuito maquina entorno
+[master]
+cmaster
+
+[all]
+cmaster
+cslave1
+
+[grupo1]
+cslave1
+
+[grupo2]
+cslave2

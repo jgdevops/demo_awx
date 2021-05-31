@@ -1,0 +1,10 @@
+---
+- name: playbook creando usuarios
+  hosts: grupo1
+  become: true
+  roles:
+    - usuario
+  tasks:
+    - name: include
+      include_tasks: b.yml
+...

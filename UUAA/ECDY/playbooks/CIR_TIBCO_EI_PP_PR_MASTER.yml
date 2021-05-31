@@ -1,0 +1,34 @@
+---
+- name: Inicializar
+  #Se encarga de marcar en JIRA el INICIO de una peticion
+  #Este proceso tambien es valido para marcar los logs que necesita Splunk
+  hosts: master
+  roles:
+    - inicializar
+
+- name: descarga Release
+  hosts: master
+  roles:
+    - descarga_release
+
+
+- name: gestion de ficheros
+  #Realiza la substitucion de tokens y el copiado de la release al directorio de la aplicacion
+  hosts: grupo1
+  roles:
+    - gestionFicheros
+
+- name: implantacion tibco
+  #Se encarga de realizar la operativa post de tibco
+  hosts: grupo1
+  roles:
+    - { role: TIBCO, vars: { build: "{{ build }}", salida_descarga: "{{ output_descarga.uid }}", circuitos: "{{ circuito }}"  }}
+
+
+- name: Finalizar despliegue
+  #Se encarga de marcar en JIRA el FIN de una peticion
+  #Este proceso tambien es valido para marcar los logs que necesita Splunk
+  hosts: master
+  roles:
+    - finalizar_master
+...

@@ -1,0 +1,29 @@
+---
+- name: Inicializar
+  hosts: grupo1
+  roles:
+    - inicializar
+
+- name: descarga Release
+  hosts: master
+  roles:
+    - descarga_release
+
+
+- name: gestion de ficheros
+  hosts: grupo1
+  roles:
+    - gestionFicheros
+
+- name: implantacion tibco
+  hosts: grupo1
+  roles:
+    - { role: TIBCO, vars: { pordefinir: "pordefinir", salida_descarga: "{{ output_descarga.uid }}", circuitos: "{{ lista_circuito.msg }}"  }}
+
+
+- name: Finalizar despliegue
+  hosts: grupo1
+  roles:
+    - finalizar_master
+...
+

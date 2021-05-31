@@ -1,0 +1,28 @@
+---
+- name: Obtener valores de JIRA 
+  hosts: master
+  tasks:
+    - name: consulta peticion JIRA
+      uri:
+        url: https://drive.google.com/file/d/1ncmbYRaIkSMC4I314lIXiPH74rqEvJHp/view?usp=sharing
+        return_content: yes
+      register: jsoncontent
+    - name: Obtener nombre de usuario
+      debug: msg="{{ jsoncontent.json | json_query(jmesquery) }}"
+      vars:
+        jmesquery: "nombreUsuario"
+
+
+  
+#- name: playbook preparado para la automatización de la creacion de usuario
+#  hosts: "{{ servidor }}"
+#  become: true
+#  roles:
+#    - { role: usuario, vars: { usuario: "{{ usuario }}", grupo: "{{ grupo }}"  }}
+#  tasks:
+#    - name: include
+#      include_tasks: creacionUsuario.yml
+
+
+
+...

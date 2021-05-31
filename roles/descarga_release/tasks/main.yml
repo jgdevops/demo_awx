@@ -1,0 +1,16 @@
+---
+#- name: crear directorio de descarga en master
+#  file:
+#    path: "{{ dirTemporal }}"
+#    state: directory
+#    mode: 0777
+#  register: output_descarga
+#- debug: var=output_descarga
+
+- name: descarga del repositorio de artifactory con la salida proxy comentada
+  get_url:
+     url: https://jsonplaceholder.typicode.com/users
+     dest: "{{ dirTemporal }}"
+     #El modulo get_url admite salida por proxy
+...
+

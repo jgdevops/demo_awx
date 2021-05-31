@@ -1,0 +1,23 @@
+---
+- name: creando grupos
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - grupoA
+    - grupoB
+- name: creando usuarios de variable grupoA
+  user:
+    name: "{{ item }}"
+    state: present
+    groups: grupoA
+  with_items:
+    - "{{ grupoA }}"  
+- name: creando usuarios de variable gruporB
+  user:
+    name: "{{ item }}"
+    state: present
+    groups: grupoB
+  with_items:
+    - "{{ grupoB }}"
+

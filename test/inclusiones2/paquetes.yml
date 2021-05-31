@@ -1,0 +1,6 @@
+---
+paquetes:
+  mi_pkg: vsftpd
+servicio:
+  mi_srv: vsftpd
+...

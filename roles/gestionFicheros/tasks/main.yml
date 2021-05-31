@@ -1,0 +1,22 @@
+---
+- name: vaciar carpeta de descarga temporal
+  file:
+    path: "{{ dirTemporal }}"
+    state: absent
+- name: traer de master los ficheros de release
+  copy:
+    src: "{{ dirTemporal }}"
+    dest: "{{ dirTemporal }}"
+- name: copiado de fichero de password
+  shell: cp /home/javi/password.txt {{ dirTemporal }}password.txt.mod
+
+- name: reemplazar tokens de contrasenias
+  replace:
+    dest: "{{ dirTemporal }}password.txt.mod"
+    regexp: 'secret_passbd'
+    replace: "{{ secret_passbd }}"
+
+- name: sincronizar copiad
+  shell: cp -r {{ dirTemporal}} {{ dirAplicacion }}
+
+...

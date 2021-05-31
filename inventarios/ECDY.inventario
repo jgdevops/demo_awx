@@ -1,0 +1,25 @@
+#Definición de circuito maquina entorno
+[master]
+cmaster
+
+[all]
+cmaster
+cslave1
+
+[grupo1]
+cslave1
+
+[grupo2]
+cslave2
+
+#Definicion de variables de la aplicacion
+secret_passbd=hola
+
+[all:vars]
+dirTemporal=/tmp/ECDY/
+rootUser=root
+
+[grupo1:vars]
+secret_passbd=hola
+dirAplicacion=/home/javi/ECDY/
+usuarioAplicacion=javi

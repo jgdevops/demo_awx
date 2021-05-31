@@ -1,0 +1,14 @@
+---
+- tasks:
+   name: Inicializar
+   hosts: grupo1
+   roles:
+     - inicializar
+
+  name: descarga Release
+  hosts: master
+  roles:
+    - name: descarga_release
+
+...
+

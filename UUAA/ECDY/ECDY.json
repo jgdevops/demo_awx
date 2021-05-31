@@ -1,0 +1,59 @@
+{
+   "ECDY": {
+      "CIR_TIBCO_EI_PP_PR": {
+         "circuito": "DESARROLLO-PRODUCCION",
+         "env": [
+            {
+               "entorno": "DESARROLLO",
+               "servidores": {
+                  "servidor": {
+                     "_nombre": "cslave1",
+                     "_pto_montaje": "/de/ecdy/",
+                     "_usuario": "xpcara01"
+                  },
+                  "nombre_instancia": "LPCDV501_ECDY_P01_10",
+                  "version_instancia": "JBOSS71"
+               },
+               "OrdenEntorno": "1"
+            },
+            {
+               "servidores": {
+                  "servidor": {
+                     "_nombre": "lpcdv501.localdomain",
+                     "_pto_montaje": "/pr/ecdy/",
+                     "_usuario": "xpcara01"
+                  },
+                  "nombre_instancia": "LPCDV501_ECDY_P01_10",
+                  "version_instancia": "JBOSS71"
+               },
+               "entorno": "PRODUCCION",
+               "OrdenEntorno": "2"
+            }
+         ],
+         "steps": {
+            "step": [
+               {
+                  "Nombre_Step": "Normaliza_FS",
+                  "Proceso": "Normaliza_FS__CIR_CaraAPIRest_DE_PR",
+                  "DependeDe": "null"
+               },
+               {
+                  "Nombre_Step": "Gestion_Ficheros",
+                  "Proceso": "GestionFicheros__CIR_CaraAPIRest_DE_PR",
+                  "DependeDe": "Normaliza_FS"
+               },
+               {
+                  "Nombre_Step": "Normaliza_FS_Final",
+                  "Proceso": "Normaliza_FS__CIR_CaraAPIRest_DE_PR",
+                  "DependeDe": "Gestion_Ficheros"
+               },
+               {
+                  "Nombre_Step": "implantaSh",
+                  "Proceso": "ImplantaSh__CIR_CaraAPIRest_DE_PR",
+                  "DependeDe": "Normaliza_FS_Final"
+               }
+            ]
+         }
+      }
+   }
+}

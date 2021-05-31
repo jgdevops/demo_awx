@@ -1,0 +1,11 @@
+---
+- name: master  trabajando con inclusiones
+  hosts: grupo2
+  tasks:
+    - name: incluyendo play
+      include: tasks.yml
+      vars:
+        paquete: samba
+        servicio: smb
+        state: started
+...  

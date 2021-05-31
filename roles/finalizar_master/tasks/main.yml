@@ -1,0 +1,6 @@
+---
+- name: Actualizar fin de la ejecucion en JIRA
+  vars:
+    date: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
+  shell: echo fin de la ejecucion. Fecha {{ date }}\ >> /tmp/historicojira.txt
+...

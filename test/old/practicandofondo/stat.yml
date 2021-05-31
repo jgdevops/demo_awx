@@ -1,0 +1,14 @@
+---
+- hosts: grupo1
+  become: true
+  tasks:
+    - name: verificar archivo
+      stat:
+        path: /root/123.txt
+      register: file
+    - debug: var=file
+    - name: si el archivo existe
+      shell: echo "123" > /root/aaabbb.txt
+      #when: file.stat.exists == false
+      when: file.stat.mode != 0755
+...

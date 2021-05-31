@@ -1,0 +1,25 @@
+---
+- hosts: grupo1
+  become: true
+  tasks:
+    - block:
+      - name: crear archivo
+        shell: touch /rot/123.txt
+
+      rescue:
+      - name: crear archivo
+        shell: touch /root/124.rescue
+      always:
+      - name: fichero always
+        shell: touch /root/always.txt
+    - block:
+      - name: crear archivo A
+        shell: touch /rot/123A.txt
+
+      rescue:
+      - name: crear archivo A
+        shell: touch /root/124A.rescue
+      always:
+      - name: fichero always A
+        shell: touch /root/alwaysA.txt
+...
